@@ -14,14 +14,12 @@ Gigaset L22 / 722 ringtone file format contains the following header:
 
 ### Decode
 ```bash
-(change filenames in PHP script)
-php L22_to_g722.php
-ffmpeg -f g722 -i 1000weisseLilien.L22.decode.g722 -ar 22050 test.wav
+python3 LG22.php decode test.722 test.g722
+ffmpeg -f g722 -i test.g722 -ar 22050 test.wav
 ```
 
 ### Encode
 ```bash
-(change filenames in PHP script)
-ffmpeg -i 1000weisseLilien.mp3 -ar 22050 1000weisseLilien.g722
-php g722_to_L22.php
+ffmpeg -i test.mp3 -ar 22050 test.g722
+python3 LG22.php encode test.722 test.L22
 ```
