@@ -1,5 +1,5 @@
 # Gigaset-Ringtone-Converter
-Gigaset propritary ringtone format (L22 / 722) encoder/decoder, written in PHP
+Gigaset propritary ringtone format (L22 / 722) encoder/decoder, written in Python
 
 ``` 
 Gigaset L22 / 722 ringtone file format contains the following header:
@@ -14,12 +14,12 @@ Gigaset L22 / 722 ringtone file format contains the following header:
 
 ### Decode
 ```bash
-python3 LG22.php decode test.722 test.g722
+python3 LG22.py decode test.g722 test.g722
 ffmpeg -f g722 -i test.g722 -ar 22050 test.wav
 ```
 
 ### Encode
 ```bash
 ffmpeg -i test.mp3 -ar 22050 test.g722
-python3 LG22.php encode test.722 test.L22
+python3 LG22.py encode test.g722 test.L22
 ```
