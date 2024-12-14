@@ -12,6 +12,10 @@ Gigaset L22 / 722 ringtone file format contains the following header:
 	n bytes payload, XOR encrypted with (MD5 checksum at (read offset % 16)) + read offset. 
 ```
 
+### Regarding sampling rates
+For some reason, I pulled 22050Hz ringtones off of the phone, but when i uploaded mine, i had to use a 16000Hz sampling rate.
+If your ringtones sound too fast or slow, try a different sampling rate.
+
 ### Decode
 ```bash
 python3 LG22.py decode test.g722 test.g722
