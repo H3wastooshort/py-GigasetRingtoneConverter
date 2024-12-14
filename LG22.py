@@ -17,15 +17,15 @@ def encode(decoded_filename,encoded_filename,trackname):
     key = m.digest()
     
     with open(encoded_filename,"wb") as ef:
-        file.write("GRT1")
+        ef.write("GRT1".encode("ascii"))
         #little endian uint32_t followed by uint_8
-        file.write(pack("<LB", (4 + 4 + 1 + len(filename) + 16 + 4 + len(data),  len(filename)) ))
-        file.write(filename)
-        file.write(key)
-        file.write(pack("L", len(data)))
+        ef.write(pack("<LB", 4 + 4 + 1 + len(trackname) + 16 + 4 + len(data),  len(trackname) ))
+        ef.write(trackname.encode("ascii"))
+        ef.write(key)
+        ef.write(pack("L", len(data)))
         #write "encrypted" data
         for i in range(0,len(data)):
-            file.write(pack("B", data[i] ^ ((key[i % 16] + i) & 0xFF)))
+            ef.write(pack("B", data[i] ^ ((key[i % 16] + i) & 0xFF)))
 
 
 #decode
